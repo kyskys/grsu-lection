@@ -5,7 +5,13 @@ public class Frenchman extends AbstractEntity<Frenchman> {
     private String name;
     private Integer age;
 
-    public Boolean getMime() {
+    public Frenchman(Boolean mime, String name, Integer age) {
+        this.mime = mime;
+        this.name = name;
+        this.age = age;
+    }
+
+    public Boolean isMime() {
         return mime;
     }
 
@@ -32,7 +38,17 @@ public class Frenchman extends AbstractEntity<Frenchman> {
     @Override
     public void update(Frenchman newEntity) {
         setName(newEntity.getName());
-        setMime(newEntity.getMime());
+        setMime(newEntity.isMime());
         setAge(newEntity.getAge());
+    }
+
+    @Override
+    public String toString() {
+        return "Frenchman{" +
+                "mime=" + mime +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", id=" + id +
+                '}';
     }
 }

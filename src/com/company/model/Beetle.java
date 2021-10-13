@@ -17,6 +17,12 @@ public class Beetle extends AbstractEntity<Beetle> {
     public Beetle() {
     }
 
+    public Beetle(Beetle beetle) {
+        setName(beetle.getName());
+        setLegsCount(beetle.getLegsCount());
+        setColor(beetle.getColor());
+    }
+
     @Override
     public String toString() {
         return "Beetle{" +

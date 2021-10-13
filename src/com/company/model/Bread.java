@@ -1,12 +1,19 @@
 package com.company.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Bread extends AbstractEntity<Bread> {
     private FlourType flour;
-    private Date creationDate;
+    private LocalDate creationDate;
     private Integer aliveDays;
     private Boolean sliced;
+
+    public Bread(FlourType flour, LocalDate creationDate, Integer aliveDays, Boolean sliced) {
+        this.flour = flour;
+        this.creationDate = creationDate;
+        this.aliveDays = aliveDays;
+        this.sliced = sliced;
+    }
 
     public FlourType getFlour() {
         return flour;
@@ -16,11 +23,11 @@ public class Bread extends AbstractEntity<Bread> {
         this.flour = flour;
     }
 
-    public Date getCreationDate() {
+    public LocalDate getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
+    public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
     }
 
@@ -46,5 +53,16 @@ public class Bread extends AbstractEntity<Bread> {
         setFlour(newEntity.getFlour());
         setCreationDate(newEntity.getCreationDate());
         setAliveDays(newEntity.getAliveDays());
+    }
+
+    @Override
+    public String toString() {
+        return "Bread{" +
+                "flour=" + flour +
+                ", creationDate=" + creationDate +
+                ", aliveDays=" + aliveDays +
+                ", sliced=" + sliced +
+                ", id=" + id +
+                '}';
     }
 }
