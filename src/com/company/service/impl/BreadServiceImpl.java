@@ -32,4 +32,9 @@ public class BreadServiceImpl implements BreadService {
     public List<Bread> getAll() {
         return null;
     }
+
+    @Override
+    public List<Bread> getAllSortedBy(String name) {
+        return null;
+    }
 }

@@ -10,4 +10,5 @@ public interface Service<T extends AbstractEntity<T>> {
     void delete(Long id);
     T getById(Long id);
     List<T> getAll();
+    List<T> getAllSortedBy(String name);
 }

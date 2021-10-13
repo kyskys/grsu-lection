@@ -57,4 +57,5 @@ public class Beetle extends AbstractEntity<Beetle> {
         setLegsCount(newEntity.getLegsCount());
         setName(newEntity.getName());
     }
+
 }

@@ -4,6 +4,8 @@ import com.company.dao.api.Dao;
 import com.company.model.AbstractEntity;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public abstract class AbstractDao<T extends AbstractEntity<T>> implements Dao<T> {
@@ -38,6 +40,13 @@ public abstract class AbstractDao<T extends AbstractEntity<T>> implements Dao<T>
     @Override
     public List<T> getAll() {
         return new ArrayList<>(repository);
+    }
+
+    @Override
+    public List<T> getAllSortedBy(Comparator<T> comparator) {
+        List<T> toSort = getAll();
+        toSort.sort(comparator);
+        return toSort;
     }
 
     private T findInRepository(Long id) {

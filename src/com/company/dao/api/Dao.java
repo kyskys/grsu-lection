@@ -2,6 +2,7 @@ package com.company.dao.api;
 
 import com.company.model.AbstractEntity;
 
+import java.util.Comparator;
 import java.util.List;
 
 public interface Dao<T extends AbstractEntity> {
@@ -10,4 +11,5 @@ public interface Dao<T extends AbstractEntity> {
     void delete(Long id);
     T getById(Long id);
     List<T> getAll();
+    List<T> getAllSortedBy(Comparator<T> comparator);
 }
