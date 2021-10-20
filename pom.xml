@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>grsu.lection</groupId>
+    <artifactId>main</artifactId>
+    <version>${app.version}</version>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <app.version>0.2</app.version>
+    </properties>
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>common</module>
+        <module>model</module>
+        <module>dao</module>
+        <module>service</module>
+        <module>start</module>
+    </modules>
+
+</project>
