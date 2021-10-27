@@ -1,26 +1,16 @@
-package dao.impl;
+package grsu.lection.dao.impl;
 
-import dao.api.BeetleDao;
-import dao.comparator.BeetleColorComparator;
-import dao.comparator.BeetleLegsCountComparator;
-import dao.comparator.BeetleNameComparator;
+import grsu.lection.dao.api.BeetleDao;
+import grsu.lection.dao.comparator.BeetleColorComparator;
+import grsu.lection.dao.comparator.BeetleLegsCountComparator;
+import grsu.lection.dao.comparator.BeetleNameComparator;
 import grsu.lection.model.Beetle;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class BeetleDaoImpl extends AbstractDao<Beetle> implements BeetleDao {
-    private static BeetleDao INSTANCE;
-
-    private BeetleDaoImpl() {
-
-    }
-
-    public static BeetleDao getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new BeetleDaoImpl();
-        }
-        return INSTANCE;
-    }
 
     @Override
     public List<Beetle> getAllSortedByName() {
@@ -35,5 +25,10 @@ public class BeetleDaoImpl extends AbstractDao<Beetle> implements BeetleDao {
     @Override
     public List<Beetle> getAllSortedByColor() {
         return getAllSortedBy(new BeetleColorComparator());
+    }
+
+    @Override
+    protected Class<Beetle> getEntityClass() {
+        return Beetle.class;
     }
 }

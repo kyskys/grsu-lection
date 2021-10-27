@@ -1,4 +1,4 @@
-package dao.comparator;
+package grsu.lection.dao.comparator;
 
 import grsu.lection.model.Beetle;
 

@@ -1,18 +1,22 @@
 package grsu.lection.service.impl;
 
-import dao.api.BreadDao;
+import grsu.lection.dao.api.BreadDao;
 import grsu.lection.model.Bread;
 import grsu.lection.service.api.BreadService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
+@RequiredArgsConstructor
 public class BreadServiceImpl extends AbstractService<Bread, BreadDao> implements BreadService {
 
-    private BreadDao breadDao;
+    private final BreadDao breadDao;
 
-    public BreadServiceImpl(BreadDao breadDao) {
-        super(breadDao);
-        this.breadDao = breadDao;
+    @Override
+    protected BreadDao getDefaultDao() {
+        return breadDao;
     }
 
     @Override

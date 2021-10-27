@@ -1,22 +1,21 @@
-package facade;
+package grsu.lection.facade;
 
 
 import grsu.lection.model.Bread;
 import grsu.lection.model.Frenchman;
 import grsu.lection.service.api.BreadService;
 import grsu.lection.service.api.FrenchmanService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
+@Controller
+@RequiredArgsConstructor
 public class ApplicationFacadeImpl implements ApplicationFacade {
 
     private final BreadService breadService;
     private final FrenchmanService frenchmanService;
-
-    public ApplicationFacadeImpl(BreadService breadService, FrenchmanService frenchmanService) {
-        this.breadService = breadService;
-        this.frenchmanService = frenchmanService;
-    }
 
     @Override
     public void saveBread(Bread entity) {
@@ -24,8 +23,8 @@ public class ApplicationFacadeImpl implements ApplicationFacade {
     }
 
     @Override
-    public void updateBread(Long id, Bread newEntity) {
-        breadService.update(id, newEntity);
+    public void updateBread(Bread newEntity) {
+        breadService.update(newEntity);
     }
 
     @Override

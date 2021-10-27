@@ -1,42 +1,42 @@
 package grsu.lection.service.impl;
 
 
-import dao.api.Dao;
+import grsu.lection.dao.api.Dao;
 import grsu.lection.model.AbstractEntity;
 import grsu.lection.service.api.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
-public abstract class AbstractService<T extends AbstractEntity<T>, D extends Dao<T>> implements Service<T> {
+public abstract class AbstractService<T extends AbstractEntity, D extends Dao<T>> implements Service<T> {
 
-    private final D defaultDao;
+    protected abstract D getDefaultDao();
 
-    protected AbstractService(D defaultDao) {
-        this.defaultDao = defaultDao;
-    }
-
+    @Transactional
     @Override
     public void save(T entity) {
-        defaultDao.save(entity);
+        getDefaultDao().save(entity);
     }
 
+    @Transactional
     @Override
-    public void update(Long id, T newEntity) {
-        defaultDao.update(id, newEntity);
+    public void update(T entity) {
+        getDefaultDao().update(entity);
     }
 
+    @Transactional
     @Override
     public void delete(Long id) {
-        defaultDao.delete(id);
+        getDefaultDao().delete(id);
     }
 
     @Override
     public T getById(Long id) {
-        return defaultDao.getById(id);
+        return getDefaultDao().getById(id);
     }
 
     @Override
     public List<T> getAll() {
-        return defaultDao.getAll();
+        return getDefaultDao().getAll();
     }
 }

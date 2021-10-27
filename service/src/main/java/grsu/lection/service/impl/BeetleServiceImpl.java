@@ -2,23 +2,26 @@ package grsu.lection.service.impl;
 
 
 import grsu.lection.common.util.RandomUtil;
-import dao.api.BeetleDao;
-import dao.api.BreadDao;
+import grsu.lection.dao.api.BeetleDao;
+import grsu.lection.dao.api.BreadDao;
 import grsu.lection.model.Beetle;
 import grsu.lection.model.Bread;
 import grsu.lection.service.api.BeetleService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
+@RequiredArgsConstructor
 public class BeetleServiceImpl extends AbstractService<Beetle, BeetleDao> implements BeetleService {
 
     private final BeetleDao beetleDao;
     private final BreadDao breadDao;
 
-    public BeetleServiceImpl(BeetleDao beetleDao, BreadDao breadDao) {
-        super(beetleDao);
-        this.beetleDao = beetleDao;
-        this.breadDao = breadDao;
+    @Override
+    protected BeetleDao getDefaultDao() {
+        return beetleDao;
     }
 
     @Override

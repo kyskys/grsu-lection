@@ -1,4 +1,4 @@
-package dao.api;
+package grsu.lection.dao.api;
 
 
 import grsu.lection.model.Bread;

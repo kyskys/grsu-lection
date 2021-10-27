@@ -1,4 +1,4 @@
-package facade;
+package grsu.lection.facade;
 
 import grsu.lection.model.Bread;
 import grsu.lection.model.Frenchman;
@@ -8,7 +8,7 @@ import java.util.List;
 public interface ApplicationFacade {
     // Bread methods
     void saveBread(Bread entity);
-    void updateBread(Long id, Bread newEntity);
+    void updateBread(Bread newEntity);
     void deleteBread(Long id);
     Bread getById(Long id);
     List<Bread> getAllBread();
