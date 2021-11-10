@@ -11,8 +11,7 @@ import javax.persistence.*;
 public abstract class AbstractEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "beetle_sequence")
-    @SequenceGenerator(name = "beetle_sequence", sequenceName = "beetle_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     protected Long id;
 

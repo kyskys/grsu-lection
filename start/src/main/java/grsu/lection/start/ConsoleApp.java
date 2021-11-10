@@ -44,37 +44,37 @@ public class ConsoleApp {
         Bread bread1 = new Bread(FlourType.RICE,
                 LocalDate.parse("2021-10-10"), 10, true);
 
-        beetleService.save(beetle);
-        beetleService.save(beetle2);
-        beetleService.save(beetle1);
-        beetleService.save(beetle3);
-        frenchmanService.save(frenchman);
-        frenchmanService.save(frenchman1);
-        breadService.save(bread);
-        breadService.save(bread1);
-
-        System.out.println("все жуки");
-        System.out.println(beetleService.getAll());
-        System.out.println("все французы");
-        System.out.println(frenchmanService.getAll());
-        System.out.println("все хлебушки");
-        System.out.println(breadService.getAll());
-        System.out.println();
-        System.out.println("все жуки отсортированы по имени");
-        System.out.println(beetleService.getAllSortedBy("name"));
-        System.out.println("все жуки отсортированы по количеству ног");
-        System.out.println(beetleService.getAllSortedBy("legsCount"));
-        System.out.println();
-
-        System.out.println(frenchmanService.stompBeetle(frenchman.getId(), beetle.getId()));
-        System.out.println(frenchmanService.stompBeetle(frenchman1.getId(), beetle1.getId()));
-
-        System.out.println("все жуки");
-        System.out.println(beetleService.getAll());
-
-        System.out.println(frenchmanService.eatBread(frenchman1.getId(), bread.getId()));
-        System.out.println(frenchmanService.eatBread(frenchman.getId(), bread.getId()));
-        System.out.println("все хлебушки");
-        System.out.println(breadService.getAll());
+//        beetleService.save(beetle);
+//        beetleService.save(beetle2);
+//        beetleService.save(beetle1);
+//        beetleService.save(beetle3);
+//        frenchmanService.save(frenchman);
+//        frenchmanService.save(frenchman1);
+//        breadService.save(bread);
+//        breadService.save(bread1);
+//
+//        System.out.println("все жуки");
+//        System.out.println(beetleService.getAll());
+//        System.out.println("все французы");
+//        System.out.println(frenchmanService.getAll());
+//        System.out.println("все хлебушки");
+//        System.out.println(breadService.getAll());
+//        System.out.println();
+//        System.out.println("все жуки отсортированы по имени");
+//        System.out.println(beetleService.getAllSortedBy("name"));
+//        System.out.println("все жуки отсортированы по количеству ног");
+//        System.out.println(beetleService.getAllSortedBy("legsCount"));
+//        System.out.println();
+//
+//        System.out.println(frenchmanService.stompBeetle(frenchman.getId(), beetle.getId()));
+//        System.out.println(frenchmanService.stompBeetle(frenchman1.getId(), beetle1.getId()));
+//
+//        System.out.println("все жуки");
+//        System.out.println(beetleService.getAll());
+//
+//        System.out.println(frenchmanService.eatBread(frenchman1.getId(), bread.getId()));
+//        System.out.println(frenchmanService.eatBread(frenchman.getId(), bread.getId()));
+//        System.out.println("все хлебушки");
+//        System.out.println(breadService.getAll());
     }
 }

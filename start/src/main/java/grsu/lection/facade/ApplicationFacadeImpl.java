@@ -11,20 +11,16 @@ import org.springframework.stereotype.Controller;
 import java.util.List;
 
 @Controller
-@RequiredArgsConstructor
 public class ApplicationFacadeImpl implements ApplicationFacade {
-
-    private final BreadService breadService;
-    private final FrenchmanService frenchmanService;
 
     @Override
     public void saveBread(Bread entity) {
-        breadService.save(entity);
+        //breadService.save(entity);
     }
 
     @Override
     public void updateBread(Bread newEntity) {
-        breadService.update(newEntity);
+        //breadService.update(newEntity);
     }
 
     @Override

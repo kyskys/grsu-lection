@@ -2,7 +2,7 @@ package grsu.lection.service.api;
 
 import grsu.lection.model.Frenchman;
 
-public interface FrenchmanService extends Service<Frenchman> {
+public interface FrenchmanService {
 
     String stompBeetle(Long frenchId, Long beetleId);
 

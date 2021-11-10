@@ -10,17 +10,17 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class BreadServiceImpl extends AbstractService<Bread, BreadDao> implements BreadService {
+public class BreadServiceImpl implements BreadService {
 
     private final BreadDao breadDao;
-
-    @Override
-    protected BreadDao getDefaultDao() {
-        return breadDao;
-    }
-
-    @Override
-    public List<Bread> getAllSortedBy(String name) {
-        return null;
-    }
+//
+//    @Override
+//    protected BreadDao getDefaultDao() {
+//        return breadDao;
+//    }
+//
+//    @Override
+//    public List<Bread> getAllSortedBy(String name) {
+//        return null;
+//    }
 }

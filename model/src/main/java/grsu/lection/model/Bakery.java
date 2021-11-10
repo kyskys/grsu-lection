@@ -13,19 +13,19 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "BEETLE")
+@Table(name = "BAKERY")
 public class Bakery extends AbstractEntity {
 
     @Column(name = "NAME")
     private String name;
 
-    @OneToMany(mappedBy = "bakery")
-    private List<Bread> breads;
-
-    @ManyToMany(mappedBy = "bakeries")
-    private List<Frenchman> frenchmen;
+//    @OneToMany(mappedBy = "bakery")
+//    private List<Bread> breads;
+//
+//    @ManyToMany(mappedBy = "bakeries")
+//    private List<Frenchman> frenchmen;
 
     @OneToOne(mappedBy = "bakery")
-    private Beetle beetles;
+    private Beetle beetle;
 
 }

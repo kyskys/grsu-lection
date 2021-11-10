@@ -1,14 +1,15 @@
 package grsu.lection.service.api;
 
 import grsu.lection.model.AbstractEntity;
+import grsu.lection.service.dto.AbstractDto;
 
 import java.util.List;
 
-public interface Service<T extends AbstractEntity> {
-    void save(T entity);
-    void update(T entity);
+public interface Service<T extends AbstractEntity, Z extends AbstractDto> {
+    void save(Z entity);
+    void update(Z entity);
     void delete(Long id);
-    T getById(Long id);
-    List<T> getAll();
-    List<T> getAllSortedBy(String name);
+    Z getById(Long id);
+    List<Z> getAll();
+    List<Z> getAllSortedBy(String name);
 }
