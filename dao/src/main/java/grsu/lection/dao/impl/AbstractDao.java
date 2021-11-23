@@ -3,6 +3,8 @@ package grsu.lection.dao.impl;
 import grsu.lection.dao.api.Dao;
 import grsu.lection.dao.exception.EntityNotFoundException;
 import grsu.lection.model.AbstractEntity;
+import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 
@@ -20,6 +22,7 @@ import java.util.List;
 public abstract class AbstractDao<T extends AbstractEntity> implements Dao<T> {
 
     @PersistenceContext
+    @Getter(AccessLevel.PROTECTED)
     private EntityManager entityManager;
 
     protected abstract Class<T> getEntityClass();

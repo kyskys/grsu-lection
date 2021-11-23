@@ -29,6 +29,8 @@
         <module>service</module>
         <module>start</module>
         <module>controller</module>
+        <module>jms</module>
+        <module>security</module>
     </modules>
 
     <dependencies>

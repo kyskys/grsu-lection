@@ -51,7 +51,19 @@ public class BeetleServiceImpl implements BeetleService {
 
     @Override
     public GetBeetleDto getById(Long id) {
-        return null;
+        Beetle beetle = beetleDao.getById(id);
+        return GetBeetleDto.builder()
+                .id(beetle.getId())
+                .color(Optional.ofNullable(beetle.getColor()).map(Objects::toString).orElse(null))
+                .legsCount(beetle.getLegsCount())
+                .name(beetle.getName())
+                .bakery(
+                        BeetleBakeryDto.builder()
+                                .id(beetle.getBakery().getId())
+                                .name(Optional.ofNullable(beetle.getBakery()).map(Bakery::getName).orElse(null))
+                                .build()
+                )
+                .build();
     }
 
     @Override
@@ -107,6 +119,24 @@ public class BeetleServiceImpl implements BeetleService {
             }
             return "Жук " + beetle.getName() + "скушал хлеб и размножился! Теперь у него личная армия!";
         }
+    }
+
+    @Override
+    public List<GetBeetleDto> findAllByName(String name) {
+        return beetleDao.findAllByName(name).stream().map(
+                beetle -> GetBeetleDto.builder()
+                        .id(beetle.getId())
+                        .color(Optional.ofNullable(beetle.getColor()).map(Objects::toString).orElse(null))
+                        .legsCount(beetle.getLegsCount())
+                        .name(beetle.getName())
+                        .bakery(
+                                BeetleBakeryDto.builder()
+                                        .id(beetle.getBakery().getId())
+                                        .name(Optional.ofNullable(beetle.getBakery()).map(Bakery::getName).orElse(null))
+                                        .build()
+                        )
+                        .build()
+        ).collect(Collectors.toList());
     }
 
     @Override

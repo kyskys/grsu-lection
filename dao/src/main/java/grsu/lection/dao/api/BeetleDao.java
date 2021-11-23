@@ -8,4 +8,5 @@ public interface BeetleDao extends Dao<Beetle> {
     List<Beetle> getAllSortedByName();
     List<Beetle> getAllSortedByLegsCount();
     List<Beetle> getAllSortedByColor();
+    List<Beetle> findAllByName(String name);
 }
