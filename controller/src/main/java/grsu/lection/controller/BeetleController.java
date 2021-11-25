@@ -1,10 +1,8 @@
 package grsu.lection.controller;
 
+import grsu.lection.dao.filter.BeetleSearch;
 import grsu.lection.service.api.BeetleService;
-import grsu.lection.service.dto.BeetleDictionaryDto;
-import grsu.lection.service.dto.BeetleDto;
-import grsu.lection.service.dto.CreateBeetleDto;
-import grsu.lection.service.dto.GetBeetleDto;
+import grsu.lection.service.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 import java.util.List;
 
 @RestController
@@ -40,6 +39,12 @@ public class BeetleController {
         //view - взаимодействует с клиентом
     }
 
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<Void> deleteBeetle(@PathVariable(name = "id") Long id) {
+        beetleService.delete(id);
+        return ResponseEntity.ok().build();
+    }
+
     @GetMapping
     public ResponseEntity<List<GetBeetleDto>> getAll() {
         return ResponseEntity.ok(beetleService.getAll());
@@ -60,6 +65,13 @@ public class BeetleController {
     @GetMapping(path = "/name/{name}")
     public ResponseEntity<List<GetBeetleDto>> findAllByName(@PathVariable(name="name") String name) {
         return ResponseEntity.ok(beetleService.findAllByName(name));
+    }
+
+    @GetMapping(path = "search")
+    public ResponseEntity<List<GetBeetleDto>> search(@Positive @RequestParam(defaultValue = "10") Integer size,
+                                                     @PositiveOrZero @RequestParam(defaultValue = "0") Integer page,
+                                                     BeetleSearch search) {
+        return ResponseEntity.ok(beetleService.search(size, page, search));
     }
 }
 

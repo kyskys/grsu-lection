@@ -4,12 +4,15 @@ import grsu.lection.common.util.RandomUtil;
 import grsu.lection.dao.api.BakeryDao;
 import grsu.lection.dao.api.BeetleDao;
 import grsu.lection.dao.api.BreadDao;
+import grsu.lection.dao.filter.BeetleSearch;
 import grsu.lection.model.Bakery;
 import grsu.lection.model.Beetle;
 import grsu.lection.model.Bread;
 import grsu.lection.service.api.BeetleService;
 import grsu.lection.service.dto.*;
+import grsu.lection.service.mapper.BeetleMapper;
 import lombok.RequiredArgsConstructor;
+import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -25,6 +28,7 @@ public class BeetleServiceImpl implements BeetleService {
     private final BeetleDao beetleDao;
     private final BreadDao breadDao;
     private final BakeryDao bakeryDao;
+    private BeetleMapper beetleMapper = Mappers.getMapper(BeetleMapper.class);
 
     @Override
     @Transactional
@@ -45,43 +49,20 @@ public class BeetleServiceImpl implements BeetleService {
     }
 
     @Override
+    @Transactional
     public void delete(Long id) {
-
+        beetleDao.delete(id);
     }
 
     @Override
     public GetBeetleDto getById(Long id) {
         Beetle beetle = beetleDao.getById(id);
-        return GetBeetleDto.builder()
-                .id(beetle.getId())
-                .color(Optional.ofNullable(beetle.getColor()).map(Objects::toString).orElse(null))
-                .legsCount(beetle.getLegsCount())
-                .name(beetle.getName())
-                .bakery(
-                        BeetleBakeryDto.builder()
-                                .id(beetle.getBakery().getId())
-                                .name(Optional.ofNullable(beetle.getBakery()).map(Bakery::getName).orElse(null))
-                                .build()
-                )
-                .build();
+        return beetleMapper.entityToDto(beetle);
     }
 
     @Override
     public List<GetBeetleDto> getAll() {
-        return beetleDao.getAll().stream().map(
-                beetle -> GetBeetleDto.builder()
-                        .id(beetle.getId())
-                        .color(Optional.ofNullable(beetle.getColor()).map(Objects::toString).orElse(null))
-                        .legsCount(beetle.getLegsCount())
-                        .name(beetle.getName())
-                        .bakery(
-                                BeetleBakeryDto.builder()
-                                        .id(beetle.getBakery().getId())
-                                        .name(Optional.ofNullable(beetle.getBakery()).map(Bakery::getName).orElse(null))
-                                        .build()
-                        )
-                        .build()
-        ).collect(Collectors.toList());
+        return beetleDao.getAll().stream().map(beetleMapper::entityToDto).collect(Collectors.toList());
     }
 
     @Override
@@ -146,5 +127,23 @@ public class BeetleServiceImpl implements BeetleService {
                         .id(beetle.getId())
                         .name(beetle.getName())
                         .build()).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<GetBeetleDto> search(Integer size, Integer page, BeetleSearch search) {
+        return beetleDao.search(size, page, search).stream().map(
+                beetle -> GetBeetleDto.builder()
+                        .id(beetle.getId())
+                        .color(Optional.ofNullable(beetle.getColor()).map(Objects::toString).orElse(null))
+                        .legsCount(beetle.getLegsCount())
+                        .name(beetle.getName())
+                        .bakery(
+                                BeetleBakeryDto.builder()
+                                        .id(beetle.getBakery().getId())
+                                        .name(Optional.ofNullable(beetle.getBakery()).map(Bakery::getName).orElse(null))
+                                        .build()
+                        )
+                        .build()
+        ).collect(Collectors.toList());
     }
 }

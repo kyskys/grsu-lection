@@ -1,9 +1,6 @@
 package grsu.lection.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -25,6 +22,7 @@ public class Bakery extends AbstractEntity {
 //    @ManyToMany(mappedBy = "bakeries")
 //    private List<Frenchman> frenchmen;
 
+    @ToString.Exclude
     @OneToOne(mappedBy = "bakery")
     private Beetle beetle;
 

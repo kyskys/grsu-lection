@@ -30,10 +30,6 @@ public class ConsoleApp {
                 .legsCount(6)
                 .build();
 
-        Beetle beetle2 = new Beetle("Виктор", 4, Color.CYAN);
-        Beetle beetle1 = new Beetle("Никита", 2, Color.BLACK);
-        Beetle beetle3 = new Beetle("Женька", 50, Color.GRAY);
-
         Frenchman frenchman = new Frenchman(false, "Пьер", 35);
         Frenchman frenchman1 = new Frenchman(true, "Шарль", 50);
 

@@ -1,9 +1,9 @@
 package grsu.lection.model;
 
+import javafx.scene.paint.Color;
 import lombok.*;
 
 import javax.persistence.*;
-import java.awt.Color;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -36,17 +36,8 @@ public class Beetle extends AbstractEntity {
         setBakery(beetle.getBakery());
     }
 
-    public Color getColor() {
-        return Color.getColor(color);
-    }
-
-    public void setColor(Color color) {
-        this.color = color.toString();
-    }
-
     public Beetle(String name, Integer legsCount, Color color) {
         this.name = name;
         this.legsCount = legsCount;
-        this.color = color.toString();
     }
 }

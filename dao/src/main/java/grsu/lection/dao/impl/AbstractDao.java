@@ -43,7 +43,10 @@ public abstract class AbstractDao<T extends AbstractEntity> implements Dao<T> {
     public void delete(Long id) {
         log.info("Выполняю метод delete");
         log.debug("Выполняю метод delete, id = " + id);
-        //entityManager.(entityManager.get);
+        String queryString = "delete from " + getEntityClass().getName() + " ent where ent.id = :id";
+        Query query = getEntityManager().createQuery(queryString);
+        query.setParameter("id", id);
+        query.executeUpdate();
     }
 
     @Override

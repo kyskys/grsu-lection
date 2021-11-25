@@ -1,5 +1,6 @@
 package grsu.lection.service.api;
 
+import grsu.lection.dao.filter.BeetleSearch;
 import grsu.lection.service.dto.*;
 
 import java.util.List;
@@ -22,4 +23,6 @@ public interface BeetleService {
     List<GetBeetleDto> findAllByName(String name);
 
     List<BeetleDictionaryDto> getDictionary();
+
+    List<GetBeetleDto> search(Integer size, Integer page, BeetleSearch searchDto);
 }
